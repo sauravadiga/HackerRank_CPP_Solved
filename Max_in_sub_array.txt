@@ -1,0 +1,64 @@
+/*First line of input will contain the number of test cases T. For each test case, you will be given the size of array N and the size of subarray to be used K. This will be followed by the elements of the array Ai.
+
+Sample Input
+
+2
+5 2
+3 4 6 3 4
+7 4
+3 4 5 8 1 4 10
+Sample Output
+
+4 6 6 4
+8 8 8 10
+Explanation
+
+For the first case, the contiguous subarrays of size 2 are {3,4},{4,6},{6,3} and {3,4}. The 4 maximum elements of subarray of size 2 are: 4 6 6 4.
+For the second case,the contiguous subarrays of size 4 are {3,4,5,8},{4,5,8,1},{5,8,1,4} and {8,1,4,10}. The 4 maximum element of subarray of size 4 are: 8 8 8 10.*/
+
+
+#include <iostream>
+#include <deque> 
+using namespace std;
+
+void printKMax(int arr[], int n, int k){
+	//Write your code here.
+    int j,i;
+    //deque<int> test;
+    int max = 0;
+    for (j=0;j<n;j++)
+    {
+        if ((j+k) > n)
+        {
+            break;
+        }
+        //cout << "Its coming here"<<endl;
+        for (i=j;i<(j+k);i++)
+        {
+            if (arr[i] > max)
+            {
+                max = arr[i];
+            }
+        }
+        cout << max<<" ";
+        max = 0;
+    }
+}
+
+int main(){
+  
+	int t;
+	cin >> t;
+	while(t>0) {
+		int n,k;
+    	cin >> n >> k;
+    	int i;
+    	int arr[n];
+    	for(i=0;i<n;i++)
+      		cin >> arr[i];
+    	printKMax(arr, n, k);
+        cout<<endl;
+    	t--;
+  	}
+  	return 0;
+}
